@@ -924,7 +924,7 @@ public class JenkinsServer implements Closeable {
             if (null != stage && CollectionUtils.isNotEmpty(stage.getStageFlowNodes())) {
                 stage.setClient(client);
                 for (StageFlowNodes stageFlowNode : stage.getStageFlowNodes()) {
-                    String nodeId = stageFlowNode.getId();
+                    int nodeId = stageFlowNode.getId();
                     StageFlowNodesLog log = client.get(path + "job/" + EncodingUtils.encode(jobName) + "/" + buildNo + "/execution/node/" + nodeId + "/wfapi/log", StageFlowNodesLog.class);
                     log.setClient(client);
                     stageFlowNode.setLog(log);
@@ -950,6 +950,4 @@ public class JenkinsServer implements Closeable {
     public void close() {
         client.close();
     }
-
-
 }
