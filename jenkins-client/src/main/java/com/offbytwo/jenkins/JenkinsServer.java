@@ -500,6 +500,17 @@ public class JenkinsServer implements Closeable {
     }
 
     /**
+     * Get the manager of pipeline for job
+     * @param viewName view name
+     * @param folderName folder name
+     * @param jobName name of the job.
+     * @return the new PipelineManager object
+     */
+    public PipelineManager getPipelineManager(String viewName, String folderName, String jobName) {
+        return new PipelineManager(this.client, viewName, folderName, jobName);
+    }
+
+    /**
      * Get the description of an existing Label
      * 
      * @param labelName name of the label.
