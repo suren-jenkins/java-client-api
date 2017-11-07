@@ -374,6 +374,19 @@ public class JenkinsServer implements Closeable {
     }
 
     /**
+     * Copy a job from onther already exists job
+     *
+     * @param fromName from job name
+     * @param jobName target job name
+     * @throws IOException
+     */
+    public void copyJob(String fromName, String jobName) throws IOException {
+        client.post(String.format("/createItem?mode=copy&from=%s&name=%s",
+                EncodingUtils.encodeParam(fromName),
+                EncodingUtils.encodeParam(jobName)));
+    }
+
+    /**
      * Create a view on the server using the provided xml
      * 
      * @param viewName name of the view to be created.
